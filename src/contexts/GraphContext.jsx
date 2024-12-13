@@ -46,17 +46,15 @@ export const GraphProvider = ({ children }) => {
         const prev = {};
         const unvisited = new Set(vertices);
 
-        // Ініціалізація відстаней
         vertices.forEach((v) => {
             dist[v] = v === start ? 0 : Infinity;
             prev[v] = null;
         });
 
         while (unvisited.size > 0) {
-            // Знаходимо вершину з мінімальною відстанню
             let current = null;
             let minDist = Infinity;
-            unvisited.forEach(v => {
+            unvisited.forEach((v) => {
                 if (dist[v] < minDist) {
                     minDist = dist[v];
                     current = v;
@@ -68,36 +66,33 @@ export const GraphProvider = ({ children }) => {
             unvisited.delete(current);
 
             // Отримуємо всі ребра, що виходять з поточної вершини
-            const currentEdges = edges.filter(e => e.from === current || e.to === current);
-            for (const edge of currentEdges) {
-                const neighbor = edge.from === current ? edge.to : edge.from;
+            const currentEdges = edges.filter((e) => e.from === current || e.to === current);
+            currentEdges.forEach(({ from, to, weight }) => {
+                const neighbor = from === current ? to : from;
                 if (unvisited.has(neighbor)) {
-                    const newDist = dist[current] + edge.weight;
+                    const newDist = dist[current] + weight;
                     if (newDist < dist[neighbor]) {
                         dist[neighbor] = newDist;
                         prev[neighbor] = current;
                     }
                 }
-            }
+            });
         }
 
         if (dist[end] === Infinity) return null;
 
         const path = [];
-        let current = end;
         let totalWeight = 0;
-
-        while (current !== null) {
-            path.unshift(current);
-            if (prev[current] !== null) {
+        for (let node = end; node !== null; node = prev[node]) {
+            path.unshift(node);
+            if (prev[node] !== null) {
                 const edge = edges.find(
                     (e) =>
-                        (e.from === prev[current] && e.to === current) ||
-                        (e.to === prev[current] && e.from === current)
+                        (e.from === prev[node] && e.to === node) ||
+                        (e.to === prev[node] && e.from === node)
                 );
-                totalWeight += edge.weight;
+                if (edge) totalWeight += edge.weight;
             }
-            current = prev[current];
         }
 
         return { path, totalWeight };
@@ -116,7 +111,7 @@ export const GraphProvider = ({ children }) => {
             setIsRunning(true);
             const result = dijkstra(start, end);
             setPathResult(result);
-            setIsRunning(false); // Завершити виконання після завершення
+            setIsRunning(false);
         }
     }, [startVertex, endVertex, vertices, dijkstra]);
 

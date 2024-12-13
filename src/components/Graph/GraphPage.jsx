@@ -5,7 +5,6 @@ import Graph from './Graph';
 import PathInfo from './PathInfo';
 import StepInfo from './StepInfo';
 import StructureData from '../DataStructure/StructureData';
-import { useNavigate } from 'react-router-dom';
 
 const GraphPage = () => {
     const {
@@ -18,15 +17,12 @@ const GraphPage = () => {
         setEndVertex,
         handleStart,
         handleStop,
-        handleBack,
-        setPathResult,     // Додано
-        setIsRunning      // Додано
-    } = useContext(GraphContext);
+        handleBack, 
+        } = useContext(GraphContext);
 
     const algorithmCanvasRef = useRef(null);
     const structureCanvasRef = useRef(null);
 
-    const navigate = useNavigate();
 
     const drawGraph = useCallback(() => {
         const canvas = algorithmCanvasRef.current;
@@ -142,13 +138,6 @@ const GraphPage = () => {
         drawStructure();
     }, [drawGraph, drawStructure]);
 
-    const localHandleHome = useCallback(() => {
-        setStartVertex("");
-        setEndVertex("");
-        setPathResult(null);
-        setIsRunning(false);
-        navigate('/');
-    }, [navigate, setStartVertex, setEndVertex, setPathResult, setIsRunning]);
 
     return (
         <div className="container">
