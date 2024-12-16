@@ -6,7 +6,7 @@ import Controls from './Controls/Controls';
 import GraphCanvas from './GraphCanvas/GraphCanvas';
 import PathInfo from './PathInfo/PathInfo';
 import StepInfo from './StepInfo/StepInfo';
-import EdgeList from './EdgeList/EdgeList';
+
 
 function Graph() {
   const [edges, setEdges] = useState([]);
@@ -120,10 +120,6 @@ function Graph() {
         <div className="canvas-wrapper">
           <div className="title">Граф</div>
           <GraphCanvas ref={canvasRef}/>
-        </div>
-        <div className="canvas-wrapper">
-          <div className="title">Список ребер</div>
-          <EdgeList edges={edges}/>
         </div>
       </div>
       {pathResult && <PathInfo pathResult={pathResult} />}
