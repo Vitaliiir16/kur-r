@@ -1,16 +1,19 @@
 import React from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
-import GraphPage from './components/Graph/GraphPage';
-import DataStructurePage from './components/DataStructure/DataStructurePage';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './components/Home/Home';
+import Graph from './components/Graph/Graph';
+import DoubleLinkedListPage from './components/DoubleLinkedList/DoubleLinkedListPage/DoubleLinkedListPage';
 
 function App() {
-    return (
-        <Routes>
-            <Route path="/" element={<Navigate to="/graph" />} /> 
-            <Route path="/graph" element={<GraphPage />} />
-            <Route path="/data-structure" element={<DataStructurePage />} />
-        </Routes>
-    );
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/graph" element={<Graph />} />
+        <Route path="/list" element={<DoubleLinkedListPage />} />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;

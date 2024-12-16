@@ -1,0 +1,43 @@
+.dll-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.dll-controls {
+    margin: 20px 0;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.dll-controls input {
+    width: 100px;
+    padding: 5px;
+}
+
+.dll-controls button {
+    padding: 5px 10px;
+    background-color: #2196F3;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.dll-controls button:hover {
+    background-color: #1976D2;
+}
+
+.dll-visual {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.dll-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}

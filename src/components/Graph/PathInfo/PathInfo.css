@@ -1,0 +1,14 @@
+.path-info {
+    background-color: #e3f2fd;
+    padding: 15px;
+    border-radius: 4px;
+    margin-top: 20px;
+  }
+  .path-info h3 {
+    margin-bottom: 10px;
+  }
+  .path-info div {
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+  

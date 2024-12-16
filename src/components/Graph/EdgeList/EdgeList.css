@@ -1,0 +1,15 @@
+.edge-list-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.edge-list-table th,
+.edge-list-table td {
+  border: 1px solid #ccc;
+  padding: 5px;
+  text-align: center;
+}
+
+.edge-list-table th {
+  background-color: #f5f5f5;
+}

@@ -1,0 +1,8 @@
+.controls input {
+    width: 100px;
+    padding: 5px;
+}
+
+.controls button {
+    padding: 5px 10px;
+}
